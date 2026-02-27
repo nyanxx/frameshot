@@ -98,26 +98,46 @@ export default function App(): JSX.Element {
   // }, [])
 
 
-
-
   return (
     <>
       <Header isimgfileAvail={isimgfileAvail} clearImage={clearImage} handleCapture={handleCapture} />
       {/* Frame */}
       <div
-        className="flex flex-col justify-center items-center p-8 mt-16 h-screen"
-        style={{ backgroundColor: backgroundColor }}
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "2rem",
+          marginTop: "4rem",
+          height: "100vh",
+          backgroundColor: backgroundColor,
+        }}
         ref={card}
       >
-        <div className={`m-8 bg-white rounded-md overflow-hidden ${imgFile ? "resize" : ""}`}>
+        <div
+          // className={`m-8 bg-white rounded-md overflow-hidden ${imgFile ? "resize" : ""}`}
+          style={{
+            margin: "2rem",          
+            backgroundColor: "white",
+            borderRadius: "0.375rem",
+            overflow: "hidden",      
+            resize: imgFile ? "both" : undefined 
+          }}
+        >
           <TitleBar />
-          <main className="w-full h-full">
+          <main
+            // className="w-full h-full"
+            style={{ width: "100%", height: "100%" }}
+          >
             {
               imgFile ?
                 <img
                   src={imgFile.src}
                   alt={imgFile.alt}
-                  className={`w-full h-full`}
+                  // className={`w-full h-full`}
+                  style={{ width: "100%", height: "100%" }}
+
                 // `object-cover object-contain` you can use one of these if needed 
                 />
                 :
@@ -132,7 +152,7 @@ export default function App(): JSX.Element {
             }
           </main>
         </div>
-      </div>
+      </div >
     </>
   )
 
